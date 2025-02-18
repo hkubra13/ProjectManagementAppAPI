@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectManagementAppAPI.Models
+namespace ProjectManagementAppAPI.Task.Data.Model
 {
     public enum TaskStatus
     {
@@ -14,7 +14,7 @@ namespace ProjectManagementAppAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int TaskId { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }

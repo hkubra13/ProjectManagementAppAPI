@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjectManagementAppAPI.Models
+namespace ProjectManagementAppAPI.ActivityLog.Data.Model
 {
     public enum ActionType
     {
@@ -16,7 +16,7 @@ namespace ProjectManagementAppAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int ActivityLogId { get; set; }
 
         [ForeignKey("Task")]
         public int TaskId { get; set; }

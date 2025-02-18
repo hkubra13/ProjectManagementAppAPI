@@ -7,7 +7,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectManagementAppAPI.ActivityLog.Data.Access\ProjectManagementAppAPI.ActivityLog.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.Attachment.Data.Access\ProjectManagementAppAPI.Attachment.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.Board.Data.Access\ProjectManagementAppAPI.Board.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.Comment.Data.Access\ProjectManagementAppAPI.Comment.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.List.Data.Access\ProjectManagementAppAPI.List.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.Project.Data.Access\ProjectManagementAppAPI.Project.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.Task.Data.Access\ProjectManagementAppAPI.Task.Data.Access.csproj" />
+    <ProjectReference Include="..\ProjectManagementAppAPI.User.Data.Access\ProjectManagementAppAPI.User.Data.Access.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

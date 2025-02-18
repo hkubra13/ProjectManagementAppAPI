@@ -1,21 +1,21 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectManagementAppAPI.Models
+namespace ProjectManagementAppAPI.Comment.Data.Model
 {
-    public class Project
+    public class Comment
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int CommentId { get; set; }
 
-        public string Name { get; set; }
-        public string Description { get; set; }
+        [ForeignKey("Task")]
+        public int TaskId { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }
 
+        public string Content { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

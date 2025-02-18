@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjectManagementAppAPI.Models
+namespace ProjectManagementAppAPI.Attachment.Data.Model
 {
     public class Attachment
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int AttachmentId { get; set; }
 
         [ForeignKey("Task")]
         public int TaskId { get; set; }
