@@ -3,15 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ProjectManagementAppAPI.ActivityLog.Data.Model
 {
-    public enum ActionType
-    {
-        TaskCreated = 0,
-        TaskUpdated = 1,
-        TaskDeleted = 2,
-        TaskStatusChanged = 3,
-        CommentAdded = 4,
-        AttachmentAdded = 5
-    }
+
     public class ActivityLog
     {
         [Key]

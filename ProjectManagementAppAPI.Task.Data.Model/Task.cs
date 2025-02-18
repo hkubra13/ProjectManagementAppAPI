@@ -4,12 +4,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectManagementAppAPI.Task.Data.Model
 {
-    public enum TaskStatus
-    {
-        Pending = 0,
-        InProgress = 1,
-        Completed = 2
-    }
     public class Task
     {
         [Key]

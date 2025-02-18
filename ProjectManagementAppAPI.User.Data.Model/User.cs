@@ -3,12 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectManagementAppAPI.User.Data.Model
 {
-    public enum RoleType
-    {
-        Admin = 0,
-        Manager = 1,
-        Employee = 2
-    }
     public class User
     {
         [Key]

@@ -34,6 +34,10 @@ builder.Services.AddDbContext<AttachmentDbContext>(options =>
 builder.Services.AddDbContext<ActivityLogDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+builder.Services.AddScoped<IBoardRepository, BoardRepository>();
+builder.Services.AddScoped<IListRepository, ListRepository>();
 
 var app = builder.Build();
 
