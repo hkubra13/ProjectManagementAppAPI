@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProjectManagementAppAPI.Board.Data.Access\ProjectManagementAppAPI.Board.Data.Access.csproj" />
     <ProjectReference Include="..\ProjectManagementAppAPI.List.Data.Model\ProjectManagementAppAPI.List.Data.Model.csproj" />
   </ItemGroup>
 

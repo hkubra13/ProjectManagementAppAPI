@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagementAppAPI.User.Data.Model
+namespace ProjectManagementAppAPI.User.Data.Model.Models
 {
     public enum RoleType
     {
         Admin = 0,
-        Manager = 1,
-        Employee = 2
+        User = 1
     }
 }

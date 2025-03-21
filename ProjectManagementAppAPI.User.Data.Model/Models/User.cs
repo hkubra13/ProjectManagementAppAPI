@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjectManagementAppAPI.User.Data.Model
+namespace ProjectManagementAppAPI.User.Data.Model.Models
 {
-    public class User
+    public class User 
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -11,6 +12,9 @@ namespace ProjectManagementAppAPI.User.Data.Model
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]

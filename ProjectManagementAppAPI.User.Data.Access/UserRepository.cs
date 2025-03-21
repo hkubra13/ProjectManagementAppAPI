@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -9,41 +10,68 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementAppAPI.User.Data.Access
 {
-    public class UserRepository(UserDbContext context) : IUserRepository
+    public class UserRepository : IUserRepository
     {
-        private readonly UserDbContext context = context;
+        private readonly UserDbContext _context;
+        private readonly IPasswordHasher<Data.Model.Models.User> _passwordHasher;
 
-        public async Task<Model.User> CreateAsync(Model.User user)
+        public UserRepository(UserDbContext context, IPasswordHasher<Data.Model.Models.User> passwordHasher)
         {
-            context.Add(user);
-            await context.SaveChangesAsync();
+            _context = context;
+            _passwordHasher = passwordHasher;
+        }
+
+        public async Task<Model.Models.User> CreateAsync(Model.Models.User user)
+        {
+            user.PasswordHash = _passwordHasher.HashPassword(user, user.PasswordHash);
+
+            _context.Add(user);
+            await _context.SaveChangesAsync();
             return user;
         }
 
         public async Task<bool> DeleteAsync(int id)
         {
             var user = await GetByIdAsync(id) ?? throw new Exception("User not found");
-            context.Remove(user);
-            await context.SaveChangesAsync();
+            _context.Remove(user);
+            await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<IEnumerable<Model.User>> GetAllAsync()
+        public async Task<IEnumerable<Model.Models.User>> GetAllAsync()
         {
-            return await context.Users.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        public async Task<Model.User> GetByIdAsync(int id)
+        public async Task<Model.Models.User> GetByIdAsync(int id)
         {
-            var user = await context.Users.Where(u => u.UserId == id).FirstOrDefaultAsync();
+            var user = await _context.Users.Where(u => u.UserId == id).FirstOrDefaultAsync();
             return user == null ? throw new Exception("User not found") : user;
         }
 
-        public async Task<Model.User> UpdateAsync(Model.User user)
+        public async Task<Model.Models.User> GetUserNameAsync(string userName)
         {
-            context.Entry(user).State = EntityState.Modified;
-            await context.SaveChangesAsync();
-            return user;
+            var user = await _context.Users
+                .Where(u => u.UserName == userName)
+                .FirstOrDefaultAsync();
+            return user == null ? throw new Exception("User not found") : user;
+        }
+
+        public async Task<Model.Models.User> UpdateAsync(Model.Models.User user)
+        {
+            var existingUser = await GetByIdAsync(user.UserId) ?? throw new Exception("User not found");
+
+            if (!string.IsNullOrEmpty(user.PasswordHash) && user.PasswordHash != existingUser.PasswordHash)
+                existingUser.PasswordHash = _passwordHasher.HashPassword(existingUser, user.PasswordHash);
+
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
+            existingUser.Email = user.Email;
+            existingUser.UserName = user.UserName;
+            existingUser.Role = user.Role;
+
+            await _context.SaveChangesAsync();
+            return existingUser;
         }
     }
 }

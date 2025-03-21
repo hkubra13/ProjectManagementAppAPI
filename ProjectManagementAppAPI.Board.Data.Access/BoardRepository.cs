@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagementAppAPI.Project.Data.Access;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementAppAPI.Board.Data.Access
 {
-    public class BoardRepository(BoardDbContext boardDbContext) : IBoardRepository
+    public class BoardRepository(BoardDbContext boardDbContext, ProjectDbContext projectDbContext) : IBoardRepository
     {
         private readonly BoardDbContext context = boardDbContext;
+        private readonly ProjectDbContext projectDbContext = projectDbContext;
 
         public async Task<Model.Board> CreateAsync(Model.Board board)
         {
@@ -39,8 +41,13 @@ namespace ProjectManagementAppAPI.Board.Data.Access
 
         public async Task<IEnumerable<Model.Board>> GetByProjectIdAsync(int id)
         {
-            var board = await context.Boards.Where(b => b.ProjectId == id).ToListAsync();
-            return board ?? throw new Exception("Board not found");
+            var projectExists = await projectDbContext.Projects.AnyAsync(p => p.ProjectId == id);
+
+            if (!projectExists)
+                throw new Exception("Project not found");
+
+            var boards = await context.Boards.ToListAsync();
+            return boards.Where(b => b.ProjectId == id);
         }
 
         public async Task<Model.Board> UpdateAsync(Model.Board board)

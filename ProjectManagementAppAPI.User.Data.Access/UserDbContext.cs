@@ -1,17 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using ProjectManagementAppAPI.User.Data.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectManagementAppAPI.User.Data.Model;
 
 
 namespace ProjectManagementAppAPI.User.Data.Access
 {
     public class UserDbContext : DbContext
     {
-        public DbSet<Model.User> Users { get; set; }
+        public DbSet<Model.Models.User> Users { get; set; }
 
         public UserDbContext(DbContextOptions<UserDbContext> options)
     : base(options)
@@ -20,6 +21,12 @@ namespace ProjectManagementAppAPI.User.Data.Access
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Model.Models.User>().ToTable("Users");
+
+            modelBuilder.Entity<Model.Models.User>()
+                .HasIndex(u => u.UserName).
+                IsUnique();
         }
     }
 }

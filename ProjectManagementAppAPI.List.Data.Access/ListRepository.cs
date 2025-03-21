@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagementAppAPI.Board.Data.Access;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementAppAPI.List.Data.Access
 {
-    public class ListRepository(ListDbContext listDbContext) : IListRepository
+    public class ListRepository(ListDbContext listDbContext, BoardDbContext boardDbContext) : IListRepository
     {
         private readonly ListDbContext context = listDbContext;
+        private readonly BoardDbContext boardDbContext = boardDbContext;
         public async Task<Model.List> CreateAsync(Model.List list)
         {
             context.Add(list);
@@ -33,13 +35,18 @@ namespace ProjectManagementAppAPI.List.Data.Access
 
         public async Task<IEnumerable<Model.List>> GetByBoardIdAsync(int id)
         {
-            var list = await context.Lists.Where(b => b.BoardId == id).ToListAsync();
-            return list ?? throw new Exception("List not found");
+            var boardExists = await boardDbContext.Boards.AnyAsync(b => b.BoardId == id);
+
+            if (!boardExists)
+                throw new Exception("Board not found");
+
+            var lists = await context.Lists.ToListAsync();
+            return lists.Where(l => l.BoardId == id);
         }
 
         public async Task<Model.List> GetByIdAsync(int id)
         {
-            var list = await context.Lists.Where(b => b.ListId == id).FirstOrDefaultAsync();
+            var list = await context.Lists.Where(l => l.ListId == id).FirstOrDefaultAsync();
             return list ?? throw new Exception("List not found");
         }
 

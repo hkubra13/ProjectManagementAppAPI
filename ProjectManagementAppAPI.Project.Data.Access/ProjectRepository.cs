@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectManagementAppAPI.User.Data.Access;
+using ProjectManagementAppAPI.User.Data.Model.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProjectManagementAppAPI.Project.Data.Access
 {
-    public class ProjectRepository(ProjectDbContext context) : IProjectRepository
+    public class ProjectRepository(ProjectDbContext context, UserDbContext userDbContext) : IProjectRepository
     {
         private readonly ProjectDbContext context = context;
+        private readonly UserDbContext userDbContext = userDbContext;
 
         public async Task<Model.Project> CreateAsync(Model.Project project)
         {
@@ -39,8 +42,13 @@ namespace ProjectManagementAppAPI.Project.Data.Access
 
         public async Task<IEnumerable<Model.Project>> GetByUserIdAsync(int id)
         {
-            var project = await context.Projects.Where(p => p.UserId == id).ToListAsync();
-            return project ?? throw new Exception("Project not found");
+            var userExists = await userDbContext.Users.AnyAsync(u => u.UserId == id);
+
+            if (!userExists)
+                throw new Exception("User not found");
+
+            var projects = await context.Projects.ToListAsync();
+            return projects.Where(p => p.UserId == id);
         }
 
         public async Task<Model.Project> UpdateAsync(Model.Project project)

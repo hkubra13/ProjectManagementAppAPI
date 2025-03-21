@@ -39,19 +39,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Act
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.User.Data.Access", "ProjectManagementAppAPI.User.Data.Access\ProjectManagementAppAPI.User.Data.Access.csproj", "{D7899EE9-7206-42B7-9329-C051141083A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Project.Data.Access", "ProjectManagementAppAPI.Project.Data.Access\ProjectManagementAppAPI.Project.Data.Access.csproj", "{C4B920EE-E476-4931-B496-3904F5771797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Project.Data.Access", "ProjectManagementAppAPI.Project.Data.Access\ProjectManagementAppAPI.Project.Data.Access.csproj", "{C4B920EE-E476-4931-B496-3904F5771797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Task.Data.Access", "ProjectManagementAppAPI.Task.Data.Access\ProjectManagementAppAPI.Task.Data.Access.csproj", "{B168278F-3B02-4588-AF5D-0B3950B63CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Task.Data.Access", "ProjectManagementAppAPI.Task.Data.Access\ProjectManagementAppAPI.Task.Data.Access.csproj", "{B168278F-3B02-4588-AF5D-0B3950B63CAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.List.Data.Access", "ProjectManagementAppAPI.List.Data.Access\ProjectManagementAppAPI.List.Data.Access.csproj", "{E06A0868-561F-4D2A-90C2-873F96BA75B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.List.Data.Access", "ProjectManagementAppAPI.List.Data.Access\ProjectManagementAppAPI.List.Data.Access.csproj", "{E06A0868-561F-4D2A-90C2-873F96BA75B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Comment.Data.Access", "ProjectManagementAppAPI.Comment.Data.Access\ProjectManagementAppAPI.Comment.Data.Access.csproj", "{5391AF2A-8032-43AD-A780-40B0FDAC9317}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Comment.Data.Access", "ProjectManagementAppAPI.Comment.Data.Access\ProjectManagementAppAPI.Comment.Data.Access.csproj", "{5391AF2A-8032-43AD-A780-40B0FDAC9317}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Board.Data.Access", "ProjectManagementAppAPI.Board.Data.Access\ProjectManagementAppAPI.Board.Data.Access.csproj", "{6E1DD85F-2D43-439F-835A-0B51E1F45DCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Board.Data.Access", "ProjectManagementAppAPI.Board.Data.Access\ProjectManagementAppAPI.Board.Data.Access.csproj", "{6E1DD85F-2D43-439F-835A-0B51E1F45DCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Attachment.Data.Access", "ProjectManagementAppAPI.Attachment.Data.Access\ProjectManagementAppAPI.Attachment.Data.Access.csproj", "{8081AB68-A909-4113-BB49-3692710135DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.Attachment.Data.Access", "ProjectManagementAppAPI.Attachment.Data.Access\ProjectManagementAppAPI.Attachment.Data.Access.csproj", "{8081AB68-A909-4113-BB49-3692710135DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.ActivityLog.Data.Access", "ProjectManagementAppAPI.ActivityLog.Data.Access\ProjectManagementAppAPI.ActivityLog.Data.Access.csproj", "{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagementAppAPI.ActivityLog.Data.Access", "ProjectManagementAppAPI.ActivityLog.Data.Access\ProjectManagementAppAPI.ActivityLog.Data.Access.csproj", "{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.User.Business", "ProjectManagementAppAPI.User.Business\ProjectManagementAppAPI.User.Business.csproj", "{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagementAppAPI.Data.Access", "ProjectManagementAppAPI.Data.Access\ProjectManagementAppAPI.Data.Access.csproj", "{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,6 +133,14 @@ Global
 		{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +162,8 @@ Global
 		{6E1DD85F-2D43-439F-835A-0B51E1F45DCE} = {68346C19-B638-4323-A4CD-AFEC872A89F7}
 		{8081AB68-A909-4113-BB49-3692710135DC} = {2B250B1C-3802-40D9-8436-EEC32B126773}
 		{BAFC7C9F-ECA8-44E4-96BA-E62D2BDF0F15} = {A5E74E6C-D3CB-42D6-8641-9EE8D9E9C1FE}
+		{1CC3971C-B5E0-4009-876C-B3AEF4D9EA13} = {4A4D0B1A-424B-470A-8EF2-3AD47C519844}
+		{6CE6CF25-7EA0-4EC6-8A56-B194FE62D431} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C29EBCC-082C-4A30-A930-B188CC6D72EA}
